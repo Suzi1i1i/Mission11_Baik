@@ -1,4 +1,4 @@
-﻿@{
+﻿@* @{
     ViewData["Title"] = "Home Page";
 }
 
@@ -21,3 +21,38 @@
         </ul>
     }
     <div page-model="@Model.PaginationInfo" page-action="Index"></div>
+ *@
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model BookListViewModel
+
+<div class="container mt-5">
+    <h1>Book List</h1>
+    <hr />
+
+    @foreach (Book p in Model.Books)
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+                <h3>@p.Title</h3>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li> Author : @p.Author</li>
+                    <li> Publisher : @p.Publisher</li>
+                    <li> ISBN : @p.ISBN</li>
+                    <li> Classification : @p.Classification</li>
+                    <li> Category : @p.Category</li>
+                    <li> Page Count : @p.PageCount</li>
+                    <li> Price : @p.Price</li>
+                </ul>
+            </div>
+        </div>
+    }
+</div>
+
+<!-- Pagination -->
+<div page-model="@Model.PaginationInfo" page-action="Index"></div>
